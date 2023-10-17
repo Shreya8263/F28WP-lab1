@@ -28,9 +28,9 @@
     </ul>
     </nav>
 
-    <!-- Banner Section -->
+    <!-- Replace the Banner Section with the slider -->
     <section class="banner-container">
-      <img src="images/travel banner.svg" alt="Illustrative banner of travel destinations" class="centered-banner">
+      <img name="slide" alt="Alt goes here" title="Title goes here" width="70%"/>
     </section>
 
     <!-- Main Content Section -->
@@ -106,3 +106,42 @@
   </div>
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Slider</title>
+</head>
+<body>
+  <img id="slide" src="" alt="Image Slider">
+  <script>
+    // 1. Declare a variable and set it to 0 to be the starting point.
+    let currentIndex = 0;
+
+    // 2. Declare images variable which will be an empty array.
+    const images = [];
+
+    // 3. Declare a variable to set the time interval between each image slide, and set it to any time value in m.s.
+    const intervalTime = 3000; // 3 seconds
+
+    // 4. Create the images list which will be the array value with image paths.
+    images.push("image1.jpg");
+    images.push("image2.jpg");
+    images.push("image3.jpg");
+    // Add more image paths as needed.
+
+    // 5. Create a function that changes the source ('src') of the image element with the name 'slide' to display different images from the 'images' array.
+    function changeImage() {
+      const imageElement = document.getElementById("slide");
+      imageElement.src = images[currentIndex];
+      currentIndex = (currentIndex + 1) % images.length;
+    }
+
+    // 6. Then run the function every x seconds.
+    setInterval(changeImage, intervalTime);
+
+    // 7. Then, run the function when the page loads.
+    window.addEventListener("load", changeImage);
+  </script>
+</body>
+</html>
+
