@@ -104,70 +104,60 @@
       <p>&copy; 2024 Wanderlust Voyages | Travel Agency. All rights reserved.</p>
     </footer>
   </div>
+  <script>// 1. Declare a variable to track the current image index
+    let currentIndex = 0;
+    
+    // 2. Declare an empty array for images
+    const images = [];
+    
+    // 3. Set the time interval (in milliseconds)
+    const intervalTime = 2000; // Change this to your desired time interval
+    
+    // 4. Create a function that populates the images array with image paths
+    function createImageList() {
+      // Add image paths to the 'images' array
+      images.push('images/1.jpeg');
+      images.push('images/2.jpeg');
+      images.push('images/3.jpeg');
+      images.push('images/4.jpeg');
+      images.push('images/5.jpeg');
+      images.push('images/6.jpeg');
+      images.push('images/7.jpeg');
+      images.push('images/8.jpeg');
+      
+    }
+    
+    // Call the function to create the image list
+    createImageList();
+    
+    // 5. Create a function to change the image source and toggle display
+    function changeImage() {
+      // Get the 'slide' element by name
+      const slide = document.getElementsByName('slide')[0];
+      
+      // Toggle display property to show/hide images
+      slide.style.display = 'none'; // Hide the current image
+      currentIndex = (currentIndex + 1) % images.length;
+      slide.src = images[currentIndex];
+      slide.style.display = 'block'; // Show the next image
+    }
+    
+    // 6. Create a function to start the image slider
+    function startImageSlider() {
+      changeImage(); // Display the first image
+      setInterval(changeImage, intervalTime); // Change images at specified intervals
+    }
+    
+    // 7. Run the function when the page loads
+    window.addEventListener('load', startImageSlider);
+    </script>
+
+  
 </body>
 </html>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        /* Add any necessary styles here */
-        #slide {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            margin: auto;
-        }
-    </style>
-</head>
-<body>
 
-<!-- Your container and other HTML elements -->
-
-<script>
-    // 1. Declare a variable and set it to 0 to be the starting point.
-    let currentSlideIndex = 0;
-
-    // 2. Declare images variable which will be an empty array.
-    let images = [];
-
-    // 3. Declare a variable to set the time interval between each image slide, and set it to any time value in ms.
-    let slideInterval = 2000; // Change this value to set the interval as desired (in milliseconds).
-
-    // 4. Create the images list which will be the array value with image paths.
-    images = [
-        '1.jpeg',
-        '2.jpeg',
-        '3.jpeg',
-        // Add more image paths as needed
-    ];
-
-    // 5. Create a function that is responsible for changing the source ('src') of the image element with the name 'slide' to display different images from the 'images’ array.
-    function changeImage() {
-        let slideElement = document.getElementById('slide');
-
-        // Check if the current slide index is within the array bounds
-        if (currentSlideIndex < images.length) {
-            slideElement.src = images[currentSlideIndex];
-            currentSlideIndex++;
-        } else {
-            // Reset to the first image if we've reached the end of the array
-            currentSlideIndex = 0;
-            slideElement.src = images[currentSlideIndex];
-        }
-    }
-
-    // 6. Run the function every x seconds.
-    setInterval(changeImage, slideInterval);
-
-    // 7. Run the function when the page loads.
-    window.onload = changeImage;
-</script>
-
-</body>
-</html>
 
 
 
